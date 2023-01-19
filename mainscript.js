@@ -1,4 +1,60 @@
-playGame();
+//add div to display results with DOM methods
+//display running score and announce winner when 5 points reached
+const buttonRock = document.querySelector('.rock');
+const buttonPaper = document.querySelector('.paper');
+const buttonScissors = document.querySelector('.scissors');
+let score = [0,0];
+
+buttonRock.addEventListener('click', () => {
+    playRound('rock');
+    checkWin();
+});
+buttonPaper.addEventListener('click', () => {
+    playRound('paper');
+    checkWin();
+});
+buttonScissors.addEventListener('click', () => {
+    playRound('scissors');
+    checkWin();
+});
+
+function playRound(playerSelection) {
+    let computerSelection = getComputerChoice();
+    computerSelection = 'rock';
+    if (computerSelection == 'rock' && playerSelection == 'rock') {
+        return('draw');
+    }
+    else if (computerSelection == 'rock' && playerSelection == 'paper') {
+        score[0]++;
+        return('player');
+    }
+    else if (computerSelection == 'rock' && playerSelection == 'scissors') {
+        score[1]++;
+        return('computer');
+    }
+    else if (computerSelection == 'paper' && playerSelection == 'paper') {
+        return('draw');
+    }
+    else if (computerSelection == 'paper' && playerSelection == 'scissors') {
+        score[0]++;
+        return('player');
+    }
+    else if (computerSelection == 'paper' && playerSelection == 'rock') {
+        score[1]++;
+        return('computer');
+    }
+    else if (computerSelection == 'scissors' && playerSelection == 'scissors') {
+        return('draw');
+    }
+    else if (computerSelection == 'scissors' && playerSelection == 'rock') {
+        score[0]++;
+        return('player');
+    }
+    else if (computerSelection == 'scissors' && playerSelection == 'paper') {
+        score[1]++;
+        return('computer');
+    }
+}
 
 function getComputerChoice() {
     let computerOptions = ['rock','paper','scissors'];
@@ -6,73 +62,12 @@ function getComputerChoice() {
     return(computerChoice);
 }
 
-function getPlayerChoice() {
-    let choice;
-    playerInput = prompt('Type Rock/Paper/Scissors');
-    let playerChoice = playerInput.toLowerCase();
-    return(playerChoice);
-}
-
-function playRound(computerSelection, playerSelection) {
-    if (computerSelection == 'rock' && playerSelection == 'rock') {
-        return('draw');
-    }
-    else if (computerSelection == 'rock' && playerSelection == 'paper') {
-        return('player');
-    }
-    else if (computerSelection == 'rock' && playerSelection == 'scissors') {
-        return('computer');
-    }
-    else if (computerSelection == 'paper' && playerSelection == 'paper') {
-        return('draw');
-    }
-    else if (computerSelection == 'paper' && playerSelection == 'scissors') {
-        return('player');
-    }
-    else if (computerSelection == 'paper' && playerSelection == 'rock') {
-        return('computer');
-    }
-    else if (computerSelection == 'scissors' && playerSelection == 'scissors') {
-        return('draw');
-    }
-    else if (computerSelection == 'scissors' && playerSelection == 'rock') {
-        return('player');
-    }
-    else if (computerSelection == 'scissors' && playerSelection == 'paper') {
-        return('computer');
-    }
-    else {
-        return('computer');
-    }
-}
-
-function playGame() {
-    let score = [0,0];
-    let winner;
-    
-    for (let i = 0; i < 5; i++) {
-        winner = playRound(getComputerChoice(), getPlayerChoice());
-        if (winner == 'player') {
-            score[0]++;
-            console.log('Player won that round');
-            console.log('score is now: ' + score);
-        }
-        else if (winner == 'computer') {
-            score[1]++;
-            console.log('Computer won that round');
-            console.log('score is now: ' + score);
-        }
-        else {
-            i--;
-            console.log('That round was a draw, redo');
-            console.log('Score is still: ' + score);
-        }
-    }
-
-    if (score[0] > score[1]) {
-        console.log('Player wins the game');
-    }
-    else if (score[0] < score[1]) {
-        console.log('Computer wins the game');
+function checkWin() {
+    if (score[0] === 5) {
+        console.log('You Win!');
+        score = [0,0];
+    } else if (score[1] === 5) {
+        console.log('Computer Wins!');
+        score = [0,0];
     }
 }
