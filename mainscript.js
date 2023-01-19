@@ -3,11 +3,14 @@
 const buttonRock = document.querySelector('.rock');
 const buttonPaper = document.querySelector('.paper');
 const buttonScissors = document.querySelector('.scissors');
+const divScore = document.querySelector('.score');
+const divWinner = document.querySelector('.winner');
 let score = [0,0];
+divScore.textContent = `Score: ${score}`;
 
 buttonRock.addEventListener('click', () => {
     playRound('rock');
-    checkWin();
+    checkWin(); 
 });
 buttonPaper.addEventListener('click', () => {
     playRound('paper');
@@ -63,11 +66,12 @@ function getComputerChoice() {
 }
 
 function checkWin() {
+    divScore.textContent = `Score: ${score}`;
     if (score[0] === 5) {
-        console.log('You Win!');
+        divWinner.textContent = 'Winner: Player';
         score = [0,0];
     } else if (score[1] === 5) {
-        console.log('Computer Wins!');
+        divWinner.textContent = 'Winner: Computer';
         score = [0,0];
     }
 }
