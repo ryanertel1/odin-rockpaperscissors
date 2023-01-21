@@ -4,15 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400&display=swap">
+
+    <link rel="stylesheet" href="./styles.css"></link>
     <script src="./mainscript.js" defer></script>
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissors">Scissors</button>
+    <div class='playContainer'>
+        <div class='rock playButtons'>
+            <div class='rockText'>R</div>
+            <div class='rockLeft'></div>
+            <div class='rockRight'></div>
+            <div class='playOutline'></div>
+        </div>
+        <div class='paper playButtons'>
+            <div class='paperText'>P</div>
+            <div class='paperLeft'></div>
+            <div class='paperRight'></div>
+            <div class='playOutline'></div>
+        </div>
+        <div class='scissors playButtons'>
+            <div class='scissorsText'>S</div>
+            <div class='scissorsLeft'></div>
+            <div class='scissorsRight'></div>
+            <div class='playOutline'></div>
+        </div>
+    </div>
 
-    <div class="score">Score: </div>
-    <div class="winner">Winner: </div>
+    <div class='resultsContainer'>
+        <div class='score'>Score: </div>
+        <div class='winner'>Winner last round: </div>
+    </div>
 </body>
 </html>
